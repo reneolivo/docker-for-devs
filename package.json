@@ -1,0 +1,19 @@
+{
+  "name": "docker-based-dev-envs",
+  "version": "1.0.0",
+  "description": "A presentation about docker based dev envs",
+  "main": "index.html",
+  "devDependencies": {
+    "watch-http-server": "^0.7.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "docker",
+    "impressjs",
+    "presentation"
+  ],
+  "author": "René Olivo",
+  "license": "MIT"
+}
