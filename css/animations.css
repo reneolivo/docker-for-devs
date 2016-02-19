@@ -1,7 +1,7 @@
 /* FLOAT */
 
 .present .float {
-  animation: float 3s infinite;
+  animation: float 5s infinite;
 }
 
 @keyframes float {
