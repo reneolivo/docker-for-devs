@@ -36,7 +36,7 @@
       <h1>Based Dev Envs</h1>
     </div>
 
-    <div id="about-me" class="step slide columns" data-x="0" data-y="-2000" data-scale="0.5">
+    <div id="about-me" class="step slide columns" data-x="0" data-y="-2000" data-scale="1" data-rotate="-90">
       <h2>About me:</h2>
 
       <div class="column">
@@ -46,7 +46,7 @@
       <div class="column">
         <h3>René Olivo</h3>
 
-        <ul class="list-slide-up">
+        <ul>
           <li>Has been around since GIFs were popular.</li>
           <li>Loves front-end development.</li>
           <li>Loves beer even more.</li>
@@ -54,10 +54,10 @@
       </div>
     </div>
 
-    <div id="contents" class="step slide" data-x="2000" data-y="-2000" data-scale="2">
+    <div id="contents" class="step slide" data-x="2000" data-y="-2000" data-scale="2" data-rotate="-180">
       <h2>Contents</h2>
 
-      <ul class="list-slide-up">
+      <ul>
         <li>Why should you be using Docker?</li>
         <li>Brief intro to Docker</li>
         <li>Dockerfile</li>
@@ -66,34 +66,20 @@
       </ul>
     </div>
 
-    <!--
-
-        This is an example of step element being scaled.
-
-        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
-        element will be 4 times larger than the others.
-        From presentation and transitions point of view it means, that it will have to be scaled
-        down (4 times) to make it back to its correct size.
-
-    -->
-    <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-        <span class="try">then you should try</span>
-        <h1>impress.js<sup>*</sup></h1>
-        <span class="footnote"><sup>*</sup> no rhyme intended</span>
+    <div id="why-should-you-use-docker" class="step slide" data-x="0" data-y="100" data-scale="4">
+        <p>Why you should be using</p>
+        <h2>Docker</h2>
     </div>
 
-    <!--
+    <div class="step" data-x="-1100" data-y="500" data-rotate="0" data-scale="1">
+        <p>Software stacks are complex</p>
 
-        This element introduces rotation.
-
-        Notation shouldn't be a surprise. We use `data-rotate="90"` attribute, meaning that this
-        element should be rotated by 90 degrees clockwise.
-
-    -->
-    <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
-        <p>It’s a <strong>presentation tool</strong> <br/>
-        inspired by the idea behind <a href="http://prezi.com">prezi.com</a> <br/>
-        and based on the <strong>power of CSS3 transforms and transitions</strong> in modern browsers.</p>
+        <div class="images-slide-up two-per-row">
+          <img src="images/logos/python.png" alt="Python Logo" width="150" />
+          <img src="images/logos/postgresql.png" alt="PostgreSQL Logo" width="150" />
+          <img src="images/logos/redis.png" alt="Redis Logo" width="150" />
+          <img src="images/logos/js.jpg" alt="Javascript Logo" width="150" />
+        </div>
     </div>
 
     <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">

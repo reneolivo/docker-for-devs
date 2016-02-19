@@ -187,7 +187,7 @@ a:focus {
 */
 .impress-enabled .step {
     margin: 0;
-    opacity: 0.3;
+    opacity: 0.15;
 
     -webkit-transition: opacity 1s;
     -moz-transition:    opacity 1s;
@@ -282,31 +282,13 @@ a:focus {
     padding: 0;
 }
 
-#title .try {
-    font-size: 64px;
-    position: absolute;
-    top: -0.5em;
-    left: 1.5em;
-
-    -webkit-transform: translateZ(20px);
-    -moz-transform:    translateZ(20px);
-    -ms-transform:     translateZ(20px);
-    -o-transform:      translateZ(20px);
-    transform:         translateZ(20px);
+#why-should-you-use-docker p {
+  padding-left: 0.8em;
 }
 
-#title h1 {
-    font-size: 190px;
-
-    -webkit-transform: translateZ(50px);
-    -moz-transform:    translateZ(50px);
-    -ms-transform:     translateZ(50px);
-    -o-transform:      translateZ(50px);
-    transform:         translateZ(50px);
-}
-
-#title .footnote {
-    font-size: 32px;
+#why-should-you-use-docker h2 {
+  margin-top: 0.5em;
+  font-size: 200px;
 }
 
 /*
