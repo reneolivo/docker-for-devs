@@ -264,6 +264,23 @@ a:focus {
   flex: 0 50%;
 }
 
+.slide.columns .column.wide-x-3 {
+  flex: 0 70%;
+}
+
+.slide.columns .column.wide-x-1 {
+  text-align: center;
+  flex: 0 30%;
+}
+
+.slide .center {
+  text-align: center;
+}
+
+.slide small {
+  font-size: 0.7em;
+}
+
 /*
     And now we start to style each step separately.
 
