@@ -213,6 +213,7 @@ a:focus {
     They cover everything what you see on first three steps of the demo.
 */
 .slide {
+    position: relative;
     display: block;
 
     width: 900px;
@@ -279,6 +280,11 @@ a:focus {
 
 .slide small {
   font-size: 0.7em;
+}
+
+.slide .float-left {
+  float: left;
+  margin-right: 1em;
 }
 
 /*
