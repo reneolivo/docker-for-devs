@@ -1,13 +1,31 @@
+/* FLOAT */
+
+.present .float {
+  animation: float 3s infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: none;
+  }
+
+  50% {
+    transform: translateY(50px);
+  }
+
+}
+
 /* IMAGES SLIDE UP */
 .images-slide-up {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 50px;
 }
 
 .images-slide-up.two-per-row img {
   flex: 0 300px;
+  margin: 10px;
   height: 300px;
 }
 
@@ -22,16 +40,12 @@
 .images-slide-up img:nth-child(5) { animation-delay: 1s; }
 
 @keyframes jump-up-then-down {
-  0% {
+  0%, 100% {
     transform: none;
   }
 
   25%,75% {
     transform: translate(0, -50px);
-  }
-
-  100% {
-    transform: none;
   }
 }
 
