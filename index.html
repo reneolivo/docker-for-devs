@@ -125,32 +125,33 @@
       <p>Docker can help you reduce <b>PC bloat</b>!</p>
     </div>
 
-    <!--
-
-        This step here doesn't introduce anything new when it comes to data attributes, but you
-        should notice in the demo that some words of this text are being animated.
-        It's a very basic CSS transition that is applied to the elements when this step element is
-        reached.
-
-        At the very beginning of the presentation all step elements are given the class of `future`.
-        It means that they haven't been visited yet.
-
-        When the presentation moves to given step `future` is changed to `present` class name.
-        That's how animation on this step works - text moves when the step has `present` class.
-
-        Finally when the step is left the `present` class is removed from the element and `past`
-        class is added.
-
-        So basically every step element has one of three classes: `future`, `present` and `past`.
-        Only one current step has the `present` class.
-
-    -->
-    <div id="ing" class="step" data-x="3500" data-y="-850" data-rotate="270" data-scale="6">
-        <p>by <b class="positioning">positioning</b>, <b class="rotating">rotating</b> and <b class="scaling">scaling</b> them on an infinite canvas</p>
+    <div id="ing" class="step" data-x="3500" data-y="-200" data-rotate="270" data-scale="6">
+        <p>
+          How can <b class="rotating">teams</b>, integrate <b class="scaling">Docker</b>
+          into their <b class="positioning">Development Process</b>?
+        </p>
     </div>
 
-    <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
-        <p>the only <b>limit</b> is your <b class="imagination">imagination</b></p>
+    <div class="step slide columns" data-x="2500" data-y="1800" data-rotate="270" data-scale="1">
+      <p>We can define our environment with the help of these two types of files:</p>
+
+      <div class="column center">
+        <img src="images/doc.png" alt="Dockerfile document" />
+        <h4>Dockerfile</h4>
+        <p>
+          Defines a container and sets it in an known state.<br />
+          For example, install a service and configure its default values.
+        </p>
+      </div>
+
+      <div class="column center">
+        <img src="images/doc.png" alt="docker-compose.yml document" />
+        <h4>docker-compose.yml</h4>
+        <p>
+          Simplifies the startup process of all the containers, the ports bindings,
+          and the disk volumes to synchronize locally.
+        </p>
+      </div>
     </div>
 
     <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
