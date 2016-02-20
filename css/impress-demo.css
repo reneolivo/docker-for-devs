@@ -288,6 +288,11 @@ a:focus {
   margin-right: 1em;
 }
 
+.slide pre {
+  margin-left: -4em;
+  font-family: monospace;
+}
+
 /*
     And now we start to style each step separately.
 

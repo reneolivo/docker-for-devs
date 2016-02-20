@@ -132,7 +132,21 @@
         </p>
     </div>
 
-    <div class="step slide columns" data-x="2500" data-y="1800" data-rotate="270" data-scale="1">
+    <div class="step slide" data-x="2500" data-y="1800" data-rotate="270" data-scale="1">
+      <h2>Running <u>One Off</u> commands:</h2>
+
+      <pre>
+        docker run -it --rm \
+          --user "$(id -u):$(id -g)" \
+          -v "$PWD":/usr/src/app \
+          -w /usr/src/app \
+          django django-admin.py startproject <b>project_name</b>
+      </pre>
+    </div>
+
+    <div class="step slide columns" data-x="3000" data-y="1800" data-rotate="270" data-scale="1">
+      <h2>Defining our environemnts</h2>
+
       <p>We can define our environment with the help of these two types of files:</p>
 
       <div class="column center">
@@ -154,14 +168,18 @@
       </div>
     </div>
 
-    <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-        <p>want to know more?</p>
-        <q><a href="http://github.com/bartaz/impress.js">use the source</a>, Luke!</q>
+    <div class="step slide" data-x="3700" data-y="1800" data-rotate="270" data-scale="1">
+      <h2>Dockerfile</h2>
+
+      <pre>
+        FROM      django:1.9.2
+        ADD       ./requirements.txt /usr/src/app/requirements.txt
+        WORKDIR   /usr/src/app
+        RUN       pip install -r requirements.txt
+        ADD       ./manage.py /usr/src/app/manage.py
+      </pre>
     </div>
 
-    <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
-        <p>one more thing...</p>
-    </div>
 
     <!--
 
