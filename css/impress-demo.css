@@ -289,8 +289,28 @@ a:focus {
 }
 
 .slide pre {
-  margin-left: -4em;
+  padding: 15px;
   font-family: monospace;
+  font-size: 0.8em;
+  color: #CCC;
+  background: #333;
+}
+
+.slide pre.small {
+  font-size: 0.7em;
+  line-height: 1.2em;
+}
+
+.slide .highlight {
+  color: yellow;
+}
+.slide .muted {
+  color: grey;
+}
+
+.slide.past.no-future,
+.slide.future.no-future {
+  opacity: 0;
 }
 
 /*

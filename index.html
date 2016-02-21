@@ -101,7 +101,7 @@
 
     <div class="step slide" data-x="100" data-y="2400" data-z="3000" data-rotate="-360" data-scale="1">
       <div class="column wide-x-3">
-        <p>This is where Docker <b>shines</b>!</p>
+        <p>And this is where Docker <b>shines</b>!</p>
         <small>It can provide a group of containers with all the services required by the project,
         delivering a development environment that everyone in the team can benefit from.</small>
       </div>
@@ -127,21 +127,21 @@
 
     <div id="ing" class="step" data-x="3500" data-y="-200" data-rotate="270" data-scale="6">
         <p>
-          How can <b class="rotating">teams</b>, integrate <b class="scaling">Docker</b>
-          into their <b class="positioning">Development Process</b>?
+          How can <b>teams</b>, integrate <b>Docker</b>
+          into their <b>Development Process</b>?
         </p>
     </div>
 
     <div class="step slide" data-x="2500" data-y="1800" data-rotate="270" data-scale="1">
       <h2>Running <u>One Off</u> commands:</h2>
 
-      <pre>
-        docker run -it --rm \
-          --user "$(id -u):$(id -g)" \
-          -v "$PWD":/usr/src/app \
-          -w /usr/src/app \
-          django django-admin.py startproject <b>project_name</b>
-      </pre>
+<pre>
+  docker run -it --rm \
+    --user "$(id -u):$(id -g)" \
+    -v "$PWD":/usr/src/app \
+    -w /usr/src/app \
+    django django-admin.py startproject <b>project_name</b>
+</pre>
     </div>
 
     <div class="step slide columns" data-x="3000" data-y="1800" data-rotate="270" data-scale="1">
@@ -168,16 +168,174 @@
       </div>
     </div>
 
-    <div class="step slide" data-x="3700" data-y="1800" data-rotate="270" data-scale="1">
+    <div class="step slide" data-x="3700" data-y="1800" data-rotate="270" data-rotate-y="90" data-scale="1">
       <h2>Dockerfile</h2>
 
-      <pre>
-        FROM      django:1.9.2
-        ADD       ./requirements.txt /usr/src/app/requirements.txt
-        WORKDIR   /usr/src/app
-        RUN       pip install -r requirements.txt
-        ADD       ./manage.py /usr/src/app/manage.py
-      </pre>
+<pre>
+FROM      django:1.9.2
+ADD       ./requirements.txt /usr/src/app/requirements.txt
+WORKDIR   /usr/src/app
+RUN       pip install -r requirements.txt
+ADD       ./manage.py /usr/src/app/manage.py
+</pre>
+    </div>
+
+    <div class="step slide" data-x="3700" data-y="1800" data-z="-400" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>docker-compose.yml</h2>
+
+<pre>
+hello_django_app:
+  build: .
+  volumes:
+    - ./hello_django:/usr/src/app/hello_django
+  ports:
+    - 8000:8000
+  command: python manage.py runserver 0.0.0.0:8000
+</pre>
+    </div>
+
+    <div class="step slide" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Linking a Postgres DB</h2>
+
+<pre class="small">
+hello_django_app:
+  build: .
+  volumes:
+    - ./hello_django:/usr/src/app/hello_django
+  ports:
+    - 8000:8000
+  command: sh ./init.sh
+  links:
+    - hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+
+hello_django_db:
+  image: postgres:latest
+  ports:
+    - 5432:5432
+  environment:
+    - POSTGRES_DB=hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+</pre>
+    </div>
+
+    <div class="step slide no-future" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Linking a Postgres DB</h2>
+
+<pre class="small">
+hello_django_app:
+  build: .
+  volumes:
+    - ./hello_django:/usr/src/app/hello_django
+  ports:
+    - 8000:8000
+  command: sh ./init.sh
+  <b class="highlight">links:
+    - hello_django_db</b>
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+
+<b class="highlight">hello_django_db:</b>
+  image: postgres:latest
+  ports:
+    - 5432:5432
+  environment:
+    - POSTGRES_DB=hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+</pre>
+    </div>
+
+    <div class="step slide no-future" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Linking a Postgres DB</h2>
+
+<pre class="small">
+hello_django_app:
+  build: .
+  volumes:
+    - ./hello_django:/usr/src/app/hello_django
+  ports:
+    - 8000:8000
+  command: sh ./init.sh
+  links:
+    - hello_django_db
+  <b class="highlight">extends:
+    file: env-vars.yml
+    service: hello_django_env_vars</b>
+
+hello_django_db:</b>
+  image: postgres:latest
+  ports:
+    - 5432:5432
+  <b class="highlight">environment:
+    - POSTGRES_DB=hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars</b>
+</pre>
+    </div>
+
+    <div class="step slide" data-x="3700" data-y="900" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Private environment file</h2>
+
+<pre>
+<span class="muted">//env-vars.yml</span>
+hello_django_env_vars:
+  environment:
+    - POSTGRES_USER=admin
+    - POSTGRES_PASSWORD=super-secret-password
+</pre>
+    </div>
+
+    <div class="step slide no-future" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Linking a Postgres DB</h2>
+
+<pre class="small">
+hello_django_app:
+  build: .
+  volumes:
+    - ./hello_django:/usr/src/app/hello_django
+  ports:
+    - 8000:8000
+  <b class="highlight">command: sh ./init.sh</b>
+  links:
+    - hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+
+hello_django_db:
+  image: postgres:latest
+  ports:
+    - 5432:5432
+  environment:
+    - POSTGRES_DB=hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+</pre>
+    </div>
+
+    <div class="step slide" data-x="3700" data-y="2700" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Waiting for other services to start</h2>
+
+<pre>
+<span class="muted">//init.sh</span>
+RUN until netcat -z -v localhost 5432; do
+  echo "$(date) - waiting for postgres...";
+sleep 1;
+
+python ./manage.py makemigrations
+python ./manage.py migrate auth
+python ./manage.py migrate
+python ./manage.py runserver 0.0.0.0:8000
+</pre>
     </div>
 
 
