@@ -207,9 +207,6 @@ hello_django_app:
   command: sh ./init.sh
   links:
     - hello_django_db
-  extends:
-    file: env-vars.yml
-    service: hello_django_env_vars
 
 hello_django_db:
   image: postgres:latest
@@ -236,9 +233,6 @@ hello_django_app:
   command: sh ./init.sh
   <b class="highlight">links:
     - hello_django_db</b>
-  extends:
-    file: env-vars.yml
-    service: hello_django_env_vars
 
 <b class="highlight">hello_django_db:</b>
   image: postgres:latest
@@ -265,9 +259,6 @@ hello_django_app:
   command: sh ./init.sh
   links:
     - hello_django_db
-  <b class="highlight">extends:
-    file: env-vars.yml
-    service: hello_django_env_vars</b>
 
 hello_django_db:</b>
   image: postgres:latest
@@ -285,7 +276,7 @@ hello_django_db:</b>
       <h2>Private environment file</h2>
 
 <pre>
-<span class="muted">//env-vars.yml</span>
+<span class="muted"># env-vars.yml</span>
 hello_django_env_vars:
   environment:
     - POSTGRES_USER=admin
@@ -306,9 +297,6 @@ hello_django_app:
   <b class="highlight">command: sh ./init.sh</b>
   links:
     - hello_django_db
-  extends:
-    file: env-vars.yml
-    service: hello_django_env_vars
 
 hello_django_db:
   image: postgres:latest
@@ -326,7 +314,7 @@ hello_django_db:
       <h2>Waiting for other services to start</h2>
 
 <pre>
-<span class="muted">//init.sh</span>
+<span class="muted"># init.sh</span>
 RUN until netcat -z -v localhost 5432; do
   echo "$(date) - waiting for postgres...";
 sleep 1;
