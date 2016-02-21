@@ -194,6 +194,17 @@ hello_django_app:
 </pre>
     </div>
 
+    <div class="step slide" data-x="4000" data-y="1800" data-z="-1300" data-rotate="270" data-rotate-y="0" data-scale="1">
+      <h2>Creating and starting the services</h2>
+
+<pre class="small">
+
+docker-compose build
+docker-compose up
+
+</pre>
+    </div>
+
     <div class="step slide" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
       <h2>Linking a Postgres DB</h2>
 
@@ -284,6 +295,42 @@ hello_django_env_vars:
 </pre>
     </div>
 
+    <div class="step slide" data-x="3700" data-y="900" data-z="-1300" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Python settings</h2>
+
+<pre class="small">
+<span class="muted"># settings.py</span>
+from os import environ
+
+<span class="muted"># ...</span>
+
+DATABASES = {
+  <span class="string">'default'</span>: {
+    <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,
+    <span class="string">'NAME'</span>: <span class="string">'hello_django_db'</span>,
+    <span class="string">'USER'</span>: environ.get(<span class="string">'HELLO_DJANGO_DB_ENV_POSTGRES_USER'</span>),
+    <span class="string">'PASSWORD'</span>: environ.get(<span class="string">'HELLO_DJANGO_DB_ENV_POSTGRES_PASSWORD'</span>),
+    <span class="string">'HOST'</span>: environ.get(<span class="string">'HELLO_DJANGO_DB_PORT_5432_TCP_ADDR'</span>),
+    <span class="string">'PORT'</span>: environ.get(<span class="string">'HELLO_DJANGO_DB_PORT_5432_TCP_PORT'</span>),
+  }
+}
+</pre>
+<!-- yes, I know I'll die in hell for using 2 spaces
+instead of 4 for python code, but there's just no space!!! -->
+    </div>
+
+    <div class="step slide" data-x="3700" data-y="900" data-z="-1850" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>When in doubt: printenv</h2>
+
+<pre>
+
+docker-compose run hello_django_app printenv
+
+</pre>
+      <br />
+      <p><small>* The container must be up when running this command</small></p>
+    </div>
+
     <div class="step slide no-future" data-x="3700" data-y="1800" data-z="-900" data-rotate="270" data-rotate-y="90" data-scale="1">
       <h2>Linking a Postgres DB</h2>
 
@@ -323,17 +370,6 @@ python ./manage.py makemigrations
 python ./manage.py migrate auth
 python ./manage.py migrate
 python ./manage.py runserver 0.0.0.0:8000
-</pre>
-    </div>
-
-    <div class="step slide" data-x="4000" data-y="1800" data-z="-1300" data-rotate="270" data-rotate-y="0" data-scale="1">
-      <h2>Creating and starting the services</h2>
-
-<pre class="small">
-
-docker-compose build
-docker-compose up
-
 </pre>
     </div>
 

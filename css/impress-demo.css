@@ -308,6 +308,10 @@ a:focus {
   color: grey;
 }
 
+.slide .string {
+  color: lightgreen;
+}
+
 .slide.past.no-future,
 .slide.future.no-future {
   opacity: 0;
