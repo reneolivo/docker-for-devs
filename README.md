@@ -1,4 +1,7 @@
 # Docker Based Dev Envs
 
 
-A presentation about how can developers use Docker to setup their development environment
+A presentation about how can developers use Docker to setup their development environment.
+
+
+A sample Django App using docker can be found [here](https://github.com/reneolivo/hello-django-docker).
