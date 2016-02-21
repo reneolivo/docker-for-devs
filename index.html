@@ -39,18 +39,18 @@
     <div id="about-me" class="step slide columns" data-x="0" data-y="-2000" data-scale="1" data-rotate="-90">
       <h2>About me:</h2>
 
-      <div class="column">
+      <div class="column center">
         <img class="rounded" src="images/rene-olivo.png" alt="René Olivo" />
+        <a href="https://twitter.com/rene_olivo">@rene_olivo</a>
       </div>
 
       <div class="column">
         <h3>René Olivo</h3>
 
-        <ul>
-          <li>Has been around since GIFs were popular.</li>
-          <li>Loves front-end development.</li>
-          <li>Loves beer even more.</li>
-        </ul>
+        <p>
+          Has been around since GIFs were popular.
+          Loves front-end development, learning, sharing, and beer (a bit too much).
+        </p>
       </div>
     </div>
 
@@ -59,10 +59,9 @@
 
       <ul>
         <li>Why should you be using Docker?</li>
-        <li>Brief intro to Docker</li>
-        <li>Dockerfile</li>
-        <li>Docker-compose</li>
-        <li>Best practices</li>
+        <li>How can Docker help your team?</li>
+        <li>Dockerfile / Docker-compose.</li>
+        <li>Tips and tricks.</li>
       </ul>
     </div>
 
@@ -383,39 +382,73 @@ docker-compose run hello_django_app python manage.py createsuperuser
 </pre>
     </div>
 
+    <div class="step slide" data-x="4600" data-y="1800" data-z="-1700" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Saving DB data outside the container</h2>
 
-    <!--
-
-        And the last one shows full power and flexibility of impress.js.
-
-        You can not only position element in 3D, but also rotate it around any axis.
-        So this one here will get rotated by -40 degrees (40 degrees anticlockwise) around X axis and
-        10 degrees (clockwise) around Y axis.
-
-        You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
-        as `data-rotate` (these two are basically aliases).
-
-    -->
-    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it’s</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-        <span class="footnote">* beat that, prezi ;)</span>
+      <p>
+        The data inside the DB container is stored there as long as the container is not rebuilt.
+        If you need the data to persist, you can store it locally.
+      </p>
     </div>
 
-    <!--
+    <div class="step slide" data-x="4600" data-y="1800" data-z="-2000" data-rotate="270" data-rotate-y="90" data-scale="1">
+      <h2>Saving DB data outside the container</h2>
 
-        So to summarize of all the possible attributes used to position presentation steps, we have:
+<pre class="small">
+<b class="muted"># ./docker-compose.yml</b>
 
-        * `data-x`, `data-y`, `data-z` - they define the position of **the center** of step element on
-            the canvas in pixels; their default value is 0;
-        * `data-rotate-x`, `data-rotate-y`, 'data-rotate-z`, `data-rotate` - they define the rotation of
-            the element around given axis in degrees; their default value is 0; `data-rotate` and `data-rotate-z`
-            are exactly the same;
-        * `data-scale` - defines the scale of step element; default value is 1
+hello_django_db:
+  image: postgres:latest
+  <b class="highlight">volumes:
+    - ./db-data:/var/lib/postgresql/data</b>
+  ports:
+    - 5432:5432
+  environment:
+    - POSTGRES_DB=hello_django_db
+  extends:
+    file: env-vars.yml
+    service: hello_django_env_vars
+</pre>
+    </div>
 
-        These values are used by impress.js in CSS transformation functions, so for more information consult
-        CSS transfrom docs: https://developer.mozilla.org/en/CSS/transform
+    <div class="step slide" data-x="4900" data-y="1800" data-z="-2300" data-rotate="270" data-rotate-y="0" data-scale="1">
+      <h2>Bringing in the front-end devs</h2>
 
-    -->
+      <p>We can add a container that provides <b>Bower</b>, <b>SASS</b>, and/or <b>Gulp</b>, etc.</p>
+      <br />
+
+<pre class="smaller">
+<b class="muted"># ./docker-compose.yml</b>
+
+node:
+  image: digitallyseamless/nodejs-bower-grunt:0.12
+  volumes:
+    - ./bower.json:/data/bower.json
+    - ./.bowerrc:/data/.bowerrc
+    - ./hello_django/static/vendors:/data/hello_django/static/hello/vendors
+</pre>
+    </div>
+
+    <div class="step slide" data-x="5400" data-y="1800" data-z="-2300" data-rotate="270" data-rotate-y="0" data-scale="1">
+      <h2>Bringing in the front-end devs</h2>
+
+      <p>And running it as such:</p>
+      <br />
+
+<pre>
+
+docker-compose run node bower install
+
+</pre>
+    </div>
+
+
+    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
+      <h1>Thanks for listening!</h1>
+      <p>Questions: <a href="https://twitter.com/rene_olivo">@rene_olivo</a></p>
+    </div>
+
+
     <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
     </div>
 

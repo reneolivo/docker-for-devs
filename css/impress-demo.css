@@ -300,6 +300,10 @@ a:focus {
   font-size: 0.7em;
   line-height: 1.2em;
 }
+.slide pre.smaller {
+  font-size: 0.6em;
+  line-height: 1.2em;
+}
 
 .slide .highlight {
   color: yellow;
