@@ -338,6 +338,27 @@ python ./manage.py runserver 0.0.0.0:8000
 </pre>
     </div>
 
+    <div class="step slide" data-x="4000" data-y="1800" data-z="-1300" data-rotate="270" data-rotate-y="0" data-scale="1">
+      <h2>Creating and starting the services</h2>
+
+<pre class="small">
+
+docker-compose build
+docker-compose up
+
+</pre>
+    </div>
+
+    <div class="step slide" data-x="4400" data-y="1800" data-z="-1300" data-rotate="270" data-rotate-y="0" data-scale="1">
+      <h2>Running commands inside services</h2>
+
+<pre class="small">
+
+docker-compose run hello_django_app python manage.py createsuperuser
+
+</pre>
+    </div>
+
 
     <!--
 
