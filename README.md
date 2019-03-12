@@ -8,4 +8,4 @@ A sample Django App using docker can be found [here](https://github.com/reneoliv
 
 ## Presentation
 
-[http://reneolivo.github.io/docker-for-devs/](http://reneolivo.github.io/docker-for-devs/])
+[http://reneolivo.github.io/docker-for-devs/](http://reneolivo.github.io/docker-for-devs/)
